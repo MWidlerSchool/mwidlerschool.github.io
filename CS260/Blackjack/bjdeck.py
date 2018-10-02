@@ -7,14 +7,14 @@ class BJDeck():
     Cards are dealt by an index value which moves through the list; shuffling reorders the list
     and resets the index.
     """
-    deck = []
-    index = 0
     
     
     def __init__(self):
         """
         Creates a new deck.
         """
+        self.deck = []
+        self.index = 0
         for s in ["S", "H", "D", "C"]:
             for f in ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]:
                 self.deck.append(bjcard.BJCard(f, s))

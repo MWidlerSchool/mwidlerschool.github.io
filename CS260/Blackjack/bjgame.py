@@ -6,17 +6,16 @@ class BJGame():
     Maintains the information for a two-person blackjack game. Basically a deck, a hand each for the
     player and dealer, and some light state tracking.
     """
-    # variables scoped to the class
-    deck = bjdeck.BJDeck()
-    playerHand = bjhand.BJHand(deck)
-    dealerHand = bjhand.BJHand(deck)
-    playerTurn = True
 
     def __init__(self):
         """
         Creates a new game. Calls a different function to do so, so that it can be called without having
         to create a new object.
         """
+        self.deck = bjdeck.BJDeck()
+        self.playerHand = bjhand.BJHand(self.deck)
+        self.dealerHand = bjhand.BJHand(self.deck)
+        self.playerTurn = True
         self.newGame()
 	
     def newGame(self):

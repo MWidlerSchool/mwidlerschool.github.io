@@ -4,7 +4,9 @@ class BJGameConsole():
     """
     Run blackjack in the console in text.
     """
-    game = BJGame()
+    
+    def __init__(self):
+        self.game = BJGame()
     
     def getInput(self):
     	returnVal = None

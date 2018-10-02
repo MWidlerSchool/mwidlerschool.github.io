@@ -7,13 +7,12 @@ class BJHand():
     belong to the same deck.
     """
     
-    cards = []  # the bjcards which make up the hand
-    deck = None # the deck which deals to this hand
-    
     def __init__(self, theDeck):
         """
         Constructor. A hand must be initialized with a deck.
         """
+        self.cards = [] # the bjcards which make up the hand
+        self.deck = None # the deck which deals to this hand
         if isinstance (theDeck, bjdeck.BJDeck):
             self.deck = theDeck
         else:

@@ -8,16 +8,15 @@ widgetHeight = 75
     
 
 class BJ_GUI(tkinter.Frame):
-    #declared here so I have access to them in different functions
-    playerHandMessage = None
-    dealerHandMessage = None
-    messageBoxMessage = None
-    game = None
-    playersTurn = False
     
     def __init__(self, master):
         """ Initialize frame"""
         super(BJ_GUI, self).__init__(master)
+        self.playerHandMessage = None
+        self.dealerHandMessage = None
+        self.messageBoxMessage = None
+        self.game = None
+        self.playersTurn = False
         self.create_widgets(master)
     
     def hitButtonPressed(self):
