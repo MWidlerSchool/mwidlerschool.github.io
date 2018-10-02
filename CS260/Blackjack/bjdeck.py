@@ -24,7 +24,7 @@ class BJDeck():
         """
         Reorders the list of cards and resets the index.
         """
-        index = 0
+        self.index = 0
         newDeck = []
         while len(self.deck) > 0:
             card = self.deck[random.randint(0, len(self.deck) - 1)]
@@ -39,7 +39,7 @@ class BJDeck():
         Note: This means it is possible to draw the same card twice, in extremely rare cases.
         """
         if self.index >= len(self.deck) - 1:
-            shuffle()
+            self.shuffle()
         card = self.deck[self.index]
         self.index += 1
         return card
@@ -57,3 +57,6 @@ if __name__ == "__main__":
 	deck = BJDeck()
 	deck.shuffle()
 	deck.printDeck()
+	
+	for i in range(200):
+            deck.drawCard()
