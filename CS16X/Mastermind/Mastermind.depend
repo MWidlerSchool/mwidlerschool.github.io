@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1521130167 source:c:\users\michael\desktop\c++\mastermind\main.cpp
+	"libtcod.hpp"
+	"Sequence.h"
+	"Game.h"
+	<string>
+	<Windows.h>
+
+1520974292 source:c:\users\michael\desktop\c++\mastermind\src\sequence.cpp
+	"Sequence.h"
+
+1520626575 c:\users\michael\desktop\c++\mastermind\include\sequence.h
+	"libtcod.hpp"
+	<array>
+	<random>
+
+1520978036 source:c:\users\michael\desktop\c++\mastermind\src\game.cpp
+	"Game.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1520973083 c:\users\michael\desktop\c++\mastermind\include\game.h
+	"Sequence.h"
+	<random>
+

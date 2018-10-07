@@ -1,0 +1,95 @@
+# depslib dependency file v1.0
+1528064986 source:c:\users\michael\desktop\c++\markovwordgen\textytwister\main.cpp
+	<iostream>
+	"TTBSTree.h"
+	"TTFileReader.h"
+	<vector>
+
+1528063944 source:c:\users\michael\desktop\c++\markovwordgen\textytwister\src\ttlink.cpp
+	"TTLink.h"
+
+1528063368 c:\users\michael\desktop\c++\markovwordgen\textytwister\include\ttlink.h
+	<vector>
+	<string>
+	"TTPhrase.h"
+
+1528062629 c:\users\michael\desktop\c++\markovwordgen\textytwister\include\ttphrase.h
+	<string>
+	<array>
+
+1528062629 source:c:\users\michael\desktop\c++\markovwordgen\textytwister\src\ttphrase.cpp
+	"TTPhrase.h"
+
+1528063779 source:c:\users\michael\desktop\c++\markovwordgen\textytwister\src\ttbstree.cpp
+	"TTBSTree.h"
+
+1528063678 c:\users\michael\desktop\c++\markovwordgen\textytwister\include\ttbstree.h
+	"TTLink.h"
+	<string>
+	<vector>
+
+1528064765 source:c:\users\michael\desktop\c++\markovwordgen\textytwister\src\ttfilereader.cpp
+	"TTFileReader.h"
+
+1528064775 c:\users\michael\desktop\c++\markovwordgen\textytwister\include\ttfilereader.h
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	"TTBSTree.h"
+
+1528179685 source:c:\users\michael\desktop\c++\textytwister\main.cpp
+	<iostream>
+	"TTBSTree.h"
+	"TTFileReader.h"
+	"TTFileWriter.h"
+	<vector>
+	<cstdlib>
+	<ctime>
+
+1528180930 c:\users\michael\desktop\c++\textytwister\include\ttbstree.h
+	"TTLink.h"
+	<string>
+	<vector>
+	<array>
+
+1528163806 c:\users\michael\desktop\c++\textytwister\include\ttlink.h
+	<vector>
+	<string>
+	<array>
+	"TTPhrase.h"
+
+1528180930 c:\users\michael\desktop\c++\textytwister\include\ttphrase.h
+	<string>
+	<array>
+
+1528088239 c:\users\michael\desktop\c++\textytwister\include\ttfilereader.h
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	"TTBSTree.h"
+
+1528180587 source:c:\users\michael\desktop\c++\textytwister\src\ttfilereader.cpp
+	"TTFileReader.h"
+
+1528180378 source:c:\users\michael\desktop\c++\textytwister\src\ttlink.cpp
+	"TTLink.h"
+
+1528180930 source:c:\users\michael\desktop\c++\textytwister\src\ttphrase.cpp
+	"TTPhrase.h"
+
+1528180094 source:c:\users\michael\desktop\c++\textytwister\src\ttbstree.cpp
+	"TTBSTree.h"
+
+1528181232 source:c:\users\michael\desktop\c++\textytwister\src\ttfilewriter.cpp
+	"TTFileWriter.h"
+	<iostream>
+
+1528180953 c:\users\michael\desktop\c++\textytwister\include\ttfilewriter.h
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	"TTBSTree.h"
+
