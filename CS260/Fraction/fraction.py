@@ -128,30 +128,3 @@ class Fraction():
         if remainder != 0:
             returnVal = Fraction.findGCD(small, remainder)
         return returnVal
-    
-
-if __name__ == "__main__":
-    print(Fraction(1, 2))
-    half = Fraction(1, 2)
-    third = Fraction(1, 3)
-    print(half + third)
-    one = half.add(half)
-    print(one)
-    print(one == half)
-    one.simplify()
-    print(one)
-    a = 2 * 3 * 5
-    b = 2 * 3 * 7
-    print(str(Fraction.findGCD(a, b)))
-    print(str(Fraction.findGCD(7, 5)))
-    newFract = Fraction(4, -3)
-    newFract.simplify()
-    print(newFract)
-    newFract = half.add(half)
-    print(newFract)
-    newFract = half.subtract(half)
-    print(newFract)
-    newFract = half.multiply(half)
-    print(newFract)
-    newFract = half.divide(half)
-    print(newFract)
