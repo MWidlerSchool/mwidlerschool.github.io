@@ -23,3 +23,8 @@ class LLLink():
         newLink.next = self
         self.previous.next = newLink
         self.previous = newLink
+        
+    def remove(self):
+        """Attaches the next and previous links to each other."""
+        self.next.previous = self.previous
+        self.previous.next = self.next

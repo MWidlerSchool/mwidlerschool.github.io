@@ -117,7 +117,7 @@ class Fraction():
     
     @classmethod
     def findGCD(cls, a, b):
-        """Includes wierd gyrations for instructors requirment of single exit functions."""
+        """Includes wierd gyrations for preference for single exit functions."""
         big = max(a, b)
         small = min(a, b)
         remainder = 0
