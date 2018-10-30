@@ -1,7 +1,7 @@
 from a_star_list_link import LLLink as Link
 
 class AStarList():
-    """Linked list object. A modified version of a general purpose class to keep A* nodes sorted by f."""
+    """Linked list object. A modified version of a general purpose class to keep A* nodes sorted by f. Essentially a sorted stack."""
     
     def __init__(self, data = None):
         """Initializer."""
@@ -10,6 +10,7 @@ class AStarList():
             self.addToEmpty(data)
     
     def __len__(self):
+        """Does what it says on the tin."""
         return self.size
     
     def addToEmpty(self, data):

@@ -24,6 +24,7 @@ import random
 import math
 
 class AStarObj():
+    """The main class for an A* pathing function."""
     
     #static constant
     MAX_LOOPS = 1000
@@ -34,7 +35,6 @@ class AStarObj():
         self.end = end
         self.start = start
         self.openList = AStarList(Node(start, None, AStarObj.getDistHeur(start, end), 0))
-        #self.closedList = []
         self.closedList = Table(len(boolMap), len(boolMap[0]))
         self.loops = 0
         path = None
@@ -45,7 +45,7 @@ class AStarObj():
         hasPath = False
         while hasPath == False and len(self.openList) > 0 and self.loops < AStarObj.MAX_LOOPS:
             node = self.openList.pop()
-            locList = [[1, 0, 10], [-1, 0, 10], [0, 1, 10], [0, -1, 10]]
+            locList = [[1, 0, 10], [-1, 0, 10], [0, 1, 10], [0, -1, 10]] #x, y, and distance
             if diagOkay:
                 locList += [[1, 1, 14], [1, -1, 14], [-1, 1, 14], [-1, -1, 14]] #x, y, and distance
             for loc in locList:
@@ -53,7 +53,7 @@ class AStarObj():
                 if boolMap[curLoc[0]][curLoc[1]] and self.closedList.contains(curLoc) == False:
                     if curLoc == self.end:
                         hasPath = True
-                        self.openList.pushToFront(Node(curLoc, node, 0, loc[2]))   #if the end is found, it's placed on the stack
+                        self.openList.pushToFront(Node(curLoc, node, 0, loc[2]))   #if the end is found, it's placed at the front of the list
                     elif self.openList.contains(curLoc):
                         self.openList.update(curLoc, node, loc[2])
                     else:
@@ -110,6 +110,7 @@ class AStarObj():
     
     @staticmethod
     def getOutputMap(boolMap, path, start, end):
+        """Returns the boolMap as a string map, with the path and endpoints overlain."""
         width = len(boolMap)
         height = len(boolMap[0])
         outMap = []

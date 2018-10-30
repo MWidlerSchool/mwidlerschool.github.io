@@ -3,6 +3,7 @@ class AStarNode():
     """A node on an A* grid."""
     
     def __init__(self, loc, parentNode, toEnd, stepDist):
+        """Initializes the node. The start node should have a parent of None."""
         self.loc = loc
         self.parent = parentNode
         self.h = toEnd
