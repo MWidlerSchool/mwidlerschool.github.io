@@ -76,12 +76,11 @@ class AStarObj():
     
     @staticmethod
     def getDistHeur(origin, terminus):
-        """Returns the distance heuristic. Multiplied by 1.1 to give being close to the end greater weight than distance from the start.
-        A larger multiplier reduces loops, but makes paths less optimal."""
+        """Returns the distance heuristic. Speed can be drastically improved by increasing the multiplier (from 10 to 11, even), but this 
+        leads to non-optimal moves near the start."""
         x = origin[0] - terminus[0]
         y = origin[1] - terminus[1]
-        #return int(math.sqrt((x * x) + (y * y)) * 11)
-        return (x * x) + (y * y)
+        return int(math.sqrt((x * x) + (y * y))) * 10
     
     @staticmethod
     def getTestMap(start, end, width, height):
@@ -101,9 +100,10 @@ class AStarObj():
             for y in range(1, height - 1):
                 if random.randint(0, 100) <= 25:
                     boolMap[x][y] = False
-        wallY = 5 + random.randint(0, 5)
-        for x in range (1, 15):
-            boolMap[x][wallY] = False   #random wall
+        wallX = 5 + random.randint(0, 5)
+        for y in range (1, height):
+            boolMap[wallX][y] = False   #random wall
+        boolMap[wallX][random.randint(0, 5) + (height // 2)] = True # hole in wall near center
         boolMap[start[0]][start[1]] = True   #ensure start and end are reachable
         boolMap[end[0]][end[1]] = True
         return boolMap
@@ -133,8 +133,8 @@ class AStarObj():
 if __name__ == "__main__":
     width = 30 + random.randint(0, 31)
     height = 20
-    start = [1, 1]
-    end = [width - 2, height - 2]
+    start = [1, random.randint(1, height - 1)]
+    end = [width - 2, random.randint(1, height - 1)]
     boolMap = AStarObj.getTestMap(start, end, width, height)
     aStar = AStarObj(boolMap, start, end, True)
     path = aStar.getPath()
