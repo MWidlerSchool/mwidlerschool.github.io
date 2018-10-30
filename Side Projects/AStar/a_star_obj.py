@@ -76,24 +76,24 @@ class AStarObj():
     
     @staticmethod
     def getDistHeur(origin, terminus):
-        """Returns the distance heuristic. Speed can be drastically improved by increasing the multiplier (from 10 to 11, even), but this 
-        leads to non-optimal moves near the start."""
+        """Returns the distance heuristic. Optimization can be increased by decreasing the multiplier (from 11 to 10 is generally sufficent),
+        but this aproximately doubles the cycles needed."""
         x = origin[0] - terminus[0]
         y = origin[1] - terminus[1]
-        return int(math.sqrt((x * x) + (y * y))) * 10
+        return int(math.sqrt((x * x) + (y * y))) * 11
     
     @staticmethod
     def getTestMap(start, end, width, height):
         """Returns a semi-random test map."""
         boolMap = []
-        for i in range(width):
+        for i in range(0, width):
             boolMap.append([])
-            for j in range(height):
+            for j in range(0, height):
                 boolMap[i].append(True)
-        for i in range(width):  #paint top and bottom
+        for i in range(0, width):  #paint top and bottom
             boolMap[i][0] = False
             boolMap[i][height - 1] = False
-        for i in range(height): #paint left and right
+        for i in range(0, height): #paint left and right
             boolMap[0][i] = False
             boolMap[width - 1][i] = False
         for x in range(1, width - 1):   #random obstacles
@@ -114,12 +114,12 @@ class AStarObj():
         width = len(boolMap)
         height = len(boolMap[0])
         outMap = []
-        for x in range(width):
+        for x in range(0, width):
             outMap.append([])
-            for y in range(height):
+            for y in range(0, height):
                 outMap[x].append(" ")
-        for x in range(width):
-            for y in range(height):
+        for x in range(0, width):
+            for y in range(0, height):
                 if not boolMap[x][y]:
                     outMap[x][y] = "#"
         for i in path:
@@ -133,18 +133,20 @@ class AStarObj():
 if __name__ == "__main__":
     width = 30 + random.randint(0, 31)
     height = 20
-    start = [1, random.randint(1, height - 1)]
-    end = [width - 2, random.randint(1, height - 1)]
+    start = [1, random.randint(1, height - 2)]
+    end = [width - 2, random.randint(1, height - 2)]
     boolMap = AStarObj.getTestMap(start, end, width, height)
     aStar = AStarObj(boolMap, start, end, True)
     path = aStar.getPath()
     outMap = AStarObj.getOutputMap(boolMap, path, start, end)
     dispStr = []
-    for y in range(height):
+    for y in range(0, height):
         dispStr.append(outMap[0][y] + " ")
         for x in range(1, width):
             dispStr[y] += (outMap[x][y] + " ")
-    print("Loops: {}".format(aStar.loops))
-    print("Path: {}".format(path))
-    for i in range(height):
-        print(dispStr[i])
+
+print("Loops: {}".format(aStar.loops))
+print("Path: {}".format(path))
+for i in range(0, height):
+    print(dispStr[i])
+    

@@ -1,6 +1,6 @@
 
 class AStarTable():
-    """A hash table for an A* object's closed list. Takes xy locations."""
+    """A hash table for an A* object's closed list. Takes [x, y] locations as input."""
     
     def __init__(self, width, height):
         """Initialize the table. All entries initially False."""
