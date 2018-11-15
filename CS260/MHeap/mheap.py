@@ -8,15 +8,15 @@ class MHeap:
         self.__nodeList = [None]
         self.__height = 1
         self.__elements = 0
-        self.__maxHeap = True
+        self.__compare = self.__maxCheck
     
     def setAsMaxHeap(self):
         """Sets the heap as a max heap. Does not resort any existing data."""
-        self.__maxHeap = True
+        self.__compare = self.__maxCheck
     
     def setAsMinHeap(self):
         """Sets the heap as a min heap. Does not resort any existing data."""
-        self.__maxHeap = False
+        self.__compare = self.__minCheck
     
     def add(self, newData):
         """Add a new item to the heap, and bubbles it up to maintain the proper sort."""
@@ -29,20 +29,17 @@ class MHeap:
     def bubble(self, index):
         """Compares to base case, and calls the proper bubbling type."""
         if index > 0:
-            if self.__maxHeap:
-                self.maxCheck(index);
-            else:
-                self.minCheck(index);
+            self.__compare(index)
     
-    def minCheck(self, index):
-        """Bubbles up using minimum priority."""
+    def __minCheck(self, index):
+        """Bubbles up using minimum priority. Stops if no swap is needed."""
         parent = MHeap.getParent(index)
         if self.__nodeList[index] < self.__nodeList[parent]:
             self.__nodeList[index], self.__nodeList[parent] = self.__nodeList[parent], self.__nodeList[index]
             self.bubble(parent)
     
-    def maxCheck(self, index):
-        """Bubbles up using maximum priority."""
+    def __maxCheck(self, index):
+        """Bubbles up using maximum priority. Stops if no swap is needed."""
         parent = MHeap.getParent(index)
         if self.__nodeList[index] > self.__nodeList[parent]:
             self.__nodeList[index], self.__nodeList[parent] = self.__nodeList[parent], self.__nodeList[index]
@@ -60,6 +57,7 @@ class MHeap:
         self.__nodeList = [None]
         self.__height = 1
         self.__elements = 0
+        self.__compare = self.maxCheck
     
     @property
     def height(self):
@@ -101,10 +99,12 @@ if __name__ == "__main__":
     heap = MHeap()
     for i in range(1, 100):
         heap.add(random.randint(0, 1000))
+    print("Max Heap:")
     heap.print()
     
     heap = MHeap()
     heap.setAsMinHeap()
     for i in range(1, 100):
         heap.add(random.randint(0, 1000))
+    print("\n\nMin Heap:")
     heap.print()
