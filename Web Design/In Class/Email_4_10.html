@@ -1,0 +1,23 @@
+<html>
+<body>
+	<h2>Send E-Mail to Moulik:</h2>
+	<form action="http://people.oregonstate.edu/~kotharim/read_form_input.php" method="post" onsubmit = "return verifyTN()">
+		<br/>Name:<input type="text" name="name" value=""><br/>
+		<br/>Email:<input type ="text" name = "email" value = ""><br/>
+		<br/>Phone Number:<input type ="text" name = "phone number" id = "phone_number" value = "###-###-####"><br/>
+		<br>Message:<br/><textarea rows="10" cols="30" name="comment"></textarea>
+		<input type ="submit" value="Send"><input type="Reset" value="Reset">
+	</form>
+	<script>
+	function verifyTN()
+	{
+		var tnFormat = /^\d{3}-\d{3}-\d{4}$/;
+		var enteredTN = document.getElementById("phone_number").value;
+		if(tnFormat.test(enteredTN)) 
+			return true;
+		alert("The format for a phone number must be ###-###-####");
+		return false;
+	}
+	</script>
+</body>
+</html>

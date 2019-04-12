@@ -1,0 +1,15 @@
+header {
+     width:100%;
+     background: url('http://wpsites.net/wp-content/uploads/2013/02/diamond.png') no-repeat;
+     background-size:cover;
+}
+a.links:hover{
+    color: green;
+}
+
+div#bgimage {
+    background-image: url("https://clipground.com/images/swan-feather-clipart-1.jpg");
+    opacity:0.2;
+    width:300px;
+    height:300px;
+}
