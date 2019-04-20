@@ -1,0 +1,60 @@
+img.bustImg  
+{
+	float: left;
+	height: 15%;
+	width: 15%;
+	border:5px solid #888888;
+	margin: 5px;
+	border-radius: 13px;
+	box-shadow: 3px 3px;
+}
+
+p.bigText  
+{
+	font-size: 200%;
+	text-indent: 3em;
+}
+
+p.mediumText  
+{
+	font-size: 150%;
+}
+
+h1.wideSpacedArial
+{
+	letter-spacing: 1em;
+	font-family: arial;
+}
+
+ul.shakespeareList
+{
+	list-style-image: url("QuillIcon.jpg");
+	position: relative;
+    left: 25px;
+}
+
+article.tiledArticle
+{
+	position: relative;
+    bottom: 50px;
+	margin: 10px;
+	box-shadow: 3px 3px;
+	border-color: #888888;
+	border-style: solid;
+	border-radius: 13px;
+	border-width: 0px 5px 5px 5px;
+}
+
+body.tiledBody
+{  
+	background-image: url("http://www.baltana.com/files/wallpapers-5/Floral-Pattern-Background-Wallpaper-16341.jpg");
+	background-repeat: repeat;
+}
+
+footer.footerWithBG
+{
+	width:100%;
+    background: url('http://wpsites.net/wp-content/uploads/2013/02/diamond.png') no-repeat;
+    background-size:cover;
+	text-align: center;
+}
