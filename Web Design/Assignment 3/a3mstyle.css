@@ -26,13 +26,6 @@ h1.wideSpacedArial
 	font-family: arial;
 }
 
-ul.shakespeareList
-{
-	list-style-image: url("QuillIcon.jpg");
-	position: relative;
-    left: 25px;
-}
-
 article.tiledArticle
 {
 	position: relative;
@@ -57,4 +50,14 @@ footer.footerWithBG
     background: url('http://wpsites.net/wp-content/uploads/2013/02/diamond.png') no-repeat;
     background-size:cover;
 	text-align: center;
+}
+
+button.dramaButton
+{
+	background-image: url("Images/Drama1.png");	/* this is immedeatly overwritten in the .js */
+	background-size: 250px 200px;
+	height: 200px;
+	width: 250px;
+	margin: 50px;
+	
 }
