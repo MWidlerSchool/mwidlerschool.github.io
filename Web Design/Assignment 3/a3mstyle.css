@@ -54,10 +54,18 @@ footer.footerWithBG
 
 button.dramaButton
 {
-	background-image: url("Images/Drama1.png");	/* this is immedeatly overwritten in the .js */
+	background-image: linear-gradient(to right, orange, blue);
 	background-size: 250px 200px;
 	height: 200px;
 	width: 250px;
 	margin: 50px;
-	
+	padding: 10px;
+	border: 1px solid black;
+}
+
+img.buttonImg
+{
+	width: 230px;
+	height: 180px;
+	margin: auto;
 }

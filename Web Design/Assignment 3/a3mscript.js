@@ -1,21 +1,22 @@
-
-function getImageFileName(num)
-{
-	return ("url('Images/drama" + num + ".png')");
-}
-
-function getDramaButtonName(num)
-{
-	return ("dramaButton" + num);
-}
-
 // initializer for drama buttons
 for(var i = 1; i < 11; i++)
 {
 	var dbName = getDramaButtonName(i);
 	var fileName = getImageFileName(i);
 	document.getElementById(dbName).addEventListener("click", vanish);
-	document.getElementById(dbName).style.backgroundImage = fileName;
+//	document.getElementById(dbName).style.backgroundImage = fileName;
+}
+
+// returns the url for a dramaButton image
+function getImageFileName(num)
+{
+	return ("url('Images/drama" + num + ".png')");
+}
+
+// returns the id of a dramaButton
+function getDramaButtonName(num)
+{
+	return ("dramaButton" + num);
 }
 
 // causes the passed element to disappear
