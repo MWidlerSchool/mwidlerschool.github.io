@@ -59,13 +59,24 @@ button.dramaButton
 	height: 200px;
 	width: 250px;
 	margin: 50px;
-	padding: 10px;
 	border: 1px solid black;
+	/* the following is to have a reference location for inheritence */
+	position: relative;
+	left: 0px;
+	right: 0px;
 }
 
 img.buttonImg
 {
-	width: 230px;
+	width: 180px;
 	height: 180px;
-	margin: auto;
+	position: relative;
+	top: 10px;
+}
+
+p.closeField
+{
+    position: relative;
+    bottom: 195px; 
+    left: 115px;
 }
