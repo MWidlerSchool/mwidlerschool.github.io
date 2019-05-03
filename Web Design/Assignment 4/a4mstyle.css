@@ -1,0 +1,82 @@
+img.bustImg  
+{
+	float: left;
+	height: 15%;
+	width: 15%;
+	border:5px solid #888888;
+	margin: 5px;
+	border-radius: 13px;
+	box-shadow: 3px 3px;
+}
+
+p.bigText  
+{
+	font-size: 200%;
+	text-indent: 3em;
+}
+
+p.mediumText  
+{
+	font-size: 150%;
+}
+
+h1.wideSpacedArial
+{
+	letter-spacing: 1em;
+	font-family: arial;
+}
+
+article.tiledArticle
+{
+	position: relative;
+    bottom: 50px;
+	margin: 10px;
+	box-shadow: 3px 3px;
+	border-color: #888888;
+	border-style: solid;
+	border-radius: 13px;
+	border-width: 0px 5px 5px 5px;
+}
+
+body.tiledBody
+{  
+	background-image: url("http://www.baltana.com/files/wallpapers-5/Floral-Pattern-Background-Wallpaper-16341.jpg");
+	background-repeat: repeat;
+}
+
+footer.footerWithBG
+{
+	width:100%;
+    background: url('http://wpsites.net/wp-content/uploads/2013/02/diamond.png') no-repeat;
+    background-size:cover;
+	text-align: center;
+}
+
+button.dramaButton
+{
+	background-image: linear-gradient(to right, orange, blue);
+	background-size: 250px 200px;
+	height: 200px;
+	width: 250px;
+	margin: 50px;
+	border: 1px solid black;
+	/* the following is to have a reference location for inheritence */
+	position: relative;
+	left: 0px;
+	right: 0px;
+}
+
+img.buttonImg
+{
+	width: 180px;
+	height: 180px;
+	position: relative;
+	top: 10px;
+}
+
+p.closeField
+{
+    position: relative;
+    bottom: 195px; 
+    left: 115px;
+}

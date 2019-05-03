@@ -1,0 +1,67 @@
+header {
+     width:100%;
+     background: url('http://wpsites.net/wp-content/uploads/2013/02/diamond.png') no-repeat;
+     background-size:cover;
+     height:70px;
+     padding-left: 60px;
+}
+
+.slides {
+    float: left;
+}
+#justAButton {
+    visibility: hidden;
+}
+#navbar {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#navbar li {
+    align: left;
+    display: inline;
+    position: relative;
+    z-index:500;
+}
+
+#navbar .parent:hover > ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+#navbar ul {
+    position: absolute;
+    left:0;
+    visibility: hidden;
+    padding: 0;
+    background-color: grey;
+}
+
+#navbar ul a {
+    display: block;
+    height: 15px;
+    color #fff;
+}
+
+#navbar  a:hover {
+    display: inline;
+    height: 15px;
+    color: red;
+}
+
+#navbar ul li {
+    float: left;
+    width: 100%;
+    white-space: nowrap;
+}
+
+#navbar li a {
+    display:inline;
+    padding: 6px;
+    font-weight:700;
+    height:20px;
+    text-decoration: none;
+    color: #fff;
+}
