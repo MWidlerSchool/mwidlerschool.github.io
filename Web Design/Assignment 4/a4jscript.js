@@ -1,6 +1,7 @@
 var slideIndex = 0;
 var editing = false;
-$("#justAButton").on("click", hideAndNotify);
+$("#doneButton").on("click", toggleEditing);
+$("#noneditArea").on("click", toggleEditing);
 
 showSlides();
 
@@ -14,13 +15,37 @@ function showSlides() {
 
   setTimeout(showSlides, 3000); // Change image every 3 seconds
 }
-
+/*
 function hideAndNotify()
 {
 	$("#justAButton").hide();
     clickedFunction(2);
+}*/
+
+function toggleEditing()
+{
+	editing = !editing;
+	updateEditFields();
 }
 
+function updateEditFields()
+{
+	if(!editing)
+	{
+		$("#noneditArea").html($("#editArea").val());
+		$("#editArea").hide();
+		$("#doneButton").hide();
+		$("#noneditArea").show();
+	}
+	else
+	{
+		$("#editArea").val($("#noneditArea").html());
+		$("#editArea").show();
+		$("#doneButton").show();
+		$("#noneditArea").hide();
+	}
+}
+/*
 function clickedFunction(option) {
     var paraNode = document.getElementById("editMe");
     if (editing == false) {
@@ -47,5 +72,5 @@ function clickedFunction(option) {
         console.log("Nothing to see here, move along");
         return;
     }
-}
+}*/
 

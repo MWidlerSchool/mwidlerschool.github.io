@@ -2,10 +2,6 @@
 for(var i = 1; i < 11; i++)
 {
 	var dbName = getDramaButtonName(i);
-	/*
-	document.getElementById(dbName).addEventListener("click", vanish);
-	document.getElementById(dbName).innerHTML = getImageString(i) + '<p class="closeField">&times</p>';
-	*/
 	$(dbName).on("click", vanish);
 	$(dbName).html(getImageString(i) + '<p class="closeField">&times</p>');
 }
@@ -19,8 +15,7 @@ function getImageString(num)
 // returns the id of a dramaButton
 function getDramaButtonName(num)
 {
-	//return "dramaButton" + num;
-	return "#" + "dramaButton" + num;
+	return "#dramaButton" + num;
 }
 
 // causes the passed element to disappear
@@ -33,24 +28,10 @@ function vanish()
 function vanishAll()
 {
 	$(".dramaButton").hide();
-	/*
-	for(var i = 1; i < 11; i++)
-	{
-		var dbName = getDramaButtonName(i);
-		document.getElementById(dbName).style.display = "none";
-		
-	}*/
 }
 
 // causes all dramabuttons to appear
 function unvanishAll()
 {
 	$(".dramaButton").show();
-	/*
-	for(var i = 1; i < 11; i++)
-	{
-		var dbName = getDramaButtonName(i);
-		document.getElementById(dbName).style.display = "inline";
-	}
-	*/
 }

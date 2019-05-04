@@ -9,6 +9,25 @@ img.bustImg
 	box-shadow: 3px 3px;
 }
 
+#doneButton
+{
+    display: none;
+}
+
+#editArea
+{
+	height: 400;
+	width: 800;
+	resize: none;
+	display: none;
+}
+
+#noneditArea
+{
+	height: 400;
+	width: 800;
+}
+
 p.bigText  
 {
 	font-size: 200%;
