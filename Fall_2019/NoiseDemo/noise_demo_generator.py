@@ -1,6 +1,6 @@
 import random
 import math
-from noise_demo_2d_array import array2D as array2D
+from noise_demo_2d_array import array2D
 
 def interpolateLinear(p1, p2, xOff):
    """
