@@ -1,64 +1,70 @@
 import tkinter
 from noise_demo_2d_array import array2D
+from PIL import Image
+from PIL import ImageTk
 
-pixelArr = None
-lineList = None
+# persistent references for drawing
+imgList = []
+curImg = None # this is also stored in imgList when calculated
 
-def init(canvas, size):
+def getGreyTuple(val):
    """
-   Initialize the global values used to speed up painting
-   """
-   global pixelArr
-   global lineList
-   lineList = []
-   pixelArr = array2D(size, size)
-   for x in range(size):
-      for y in range(size):
-         newRect = canvas.create_rectangle(x * 2, y * 2, x * 2, y * 2, outline = "white")
-         pixelArr.set(newRect, x, y)
-
-def getGreyString(val):
-   """
-   Return a string of the desired grey's hex value
+   Return a three-item tuple of the desired grey's color value for RGB calls
    """
    val = int(val * 256)
-   val = val + (val * 256) + (val * 65536)
-   return "#{:06x}".format(val)
+   return (val, val, val)
    
 
 def paint(canvas, paintingTemplate):
    """
    Paint the canvas, depending on what was passed.
    Brokend apart a bit for readability.
+   Drawn at *2 size
    """
-   global lineList
-   global pixelArr
-   for item in lineList:
+   #clear previous data
+   global imgList
+   global curImg
+   for item in imgList:
       canvas.delete(item)
+   imgList = []
    
+   # declare out of loops so that we're assigning rather than creating
+   xx = 0
+   yy = 0
+   
+   # for painting 2d arrays
    if isinstance(paintingTemplate, array2D):
+      # create new image
+      curImg = Image.new("RGB", (paintingTemplate.width * 2, paintingTemplate.height * 2))
+      # pixel setting loop
       for x in range(paintingTemplate.width):
          for y in range(paintingTemplate.height):
-            # get the value for the pixel on the range 0, 1
-            intensityValue = paintingTemplate.get(x, y)
-            # express the intensity as a hex value
-            greyStr = getGreyString(intensityValue) 
-            # draw a 2x2 square
-            canvas.itemconfig(pixelArr.get(x, y), outline = greyStr)
-   
+            # limit how often we're calculating positions
+            xx = x + x
+            yy = y + y
+            # generate the grey value as a tuple
+            greyTuple = getGreyTuple(paintingTemplate.get(x, y))
+            # set four pixels
+            curImg.putpixel((xx, yy), greyTuple)
+            curImg.putpixel((xx + 1, yy), greyTuple)
+            curImg.putpixel((xx, yy + 1), greyTuple)
+            curImg.putpixel((xx + 1, yy + 1), greyTuple)
+      # cast to PhotoImage so it can be drawn
+      curImg = ImageTk.PhotoImage(curImg)
+      # draw it and save a reference
+      imgList.append(canvas.create_image(0, 0, image = curImg, anchor = "nw"))
+      
+   # for painting 1d arrays
    elif isinstance(paintingTemplate, list):
-      lineList = []
-      height = len(paintingTemplate)
-      # paint it white
-      for x in range(height):
-         for y in range(height):
-            canvas.itemconfig(pixelArr.get(x, y), outline = "white")
-      for x in range(height - 1):
-         # get the y-values for the line
+      height = len(paintingTemplate) * 2
+      for x in range(len(paintingTemplate) - 1):
+         # get the y-values for the line segment
          y1 = int(paintingTemplate[x] * height) 
-         y2 = int(paintingTemplate[x + 1] * height) 
-         # draw a 2x2 square for each point
-         lineList.append(canvas.create_line(x * 2, y1 * 2, (x + 1) * 2, y2 * 2, fill = "black"))
+         y2 = int(paintingTemplate[x + 1] * height)
+         # set the x values for the line segment
+         xx = x + x
+         # draw a short line segment
+         imgList.append(canvas.create_line(xx, y1, xx + 2, y2, fill = "black"))
+         
    # request screen update rather than waiting
-   canvas.update_idletasks() 
-   
+   canvas.update_idletasks()

@@ -5,14 +5,14 @@ from noise_demo_2d_array import array2D
 def interpolateLinear(p1, p2, xOff):
    """
    Takes two points, and how far from the first to the second the you're looking for
-   (in the domain of [0.0, 1.0))
+   in the domain of [0.0, 1.0)
    """
    return p1 + ((p2 - p1) * xOff)
 
 def interpolateCosine(p1, p2, xOff):
    """
    Takes two points, and how far from the first to the second the you're looking for
-   (in the domain of [0.0, 1.0))
+   in the domain of [0.0, 1.0)
    """
    xOff = ((-1.0 * math.cos(math.pi * xOff)) *.5) + .5
    return interpolateLinear(p1, p2, xOff)
@@ -70,6 +70,9 @@ def get2DNoiseValue(xPoint, yPoint, valArr, interpolation = "cosine"):
    return interpStyle(px1, px2, yInset)
 
 def getRandomNoise(size):
+   """
+   Returns a big block of random noise.
+   """
    arr = array2D(size, size)
    for x in range(size):
       for y in range(size):
@@ -85,8 +88,8 @@ def get1DPerlinNoise(params):
    style = params[4]
    # this is what we'll eventually output
    noiseArr = [0.0] * size
-   # make a 1D array of random values at 1/n size
-   randomArr = [0.0] * (size // divisor)
+   # make a 1D array of random values
+   randomArr = [0.0] * (size)
    for i in range(len(randomArr)):
       randomArr[i] = random.random()
    for j in range(len(noiseArr)):
@@ -105,7 +108,7 @@ def get1DChoir(params):
    for i in range(octaves):
       noiseList.append(get1DPerlinNoise(params))
       # each octave has half the smoothness of the previous
-      params[1] = params[1] // 2
+      params[1] = params[1] / 2
    return combine1DNoise(noiseList)
 
 def combine1DNoise(noiseList):
@@ -138,8 +141,8 @@ def get2DPerlinNoise(params):
    maxDimension = max(xDivisor, yDivisor)
    # this is what we'll eventually output
    noiseArr = array2D(size, size)
-   # make a 2D array of random values at 1/n size
-   randomArr = getRandomNoise(size // maxDimension)
+   # make a 2D array of random values
+   randomArr = getRandomNoise(size)
    for x in range(size):
       for y in range(size):
          val = get2DNoiseValue(x / xDivisor, y / yDivisor, randomArr, style)
@@ -158,8 +161,8 @@ def get2DChoir(params):
    for i in range(octaves):
       noiseList.append(get2DPerlinNoise(params))
       # each octave has half the smoothness of the previous
-      params[1] = params[1] // 2
-      params[2] = params[2] // 2
+      params[1] = params[1] / 2
+      params[2] = params[2] / 2
    return combine2DNoise(noiseList)
 
 def combine2DNoise(noiseList):

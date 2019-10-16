@@ -12,12 +12,13 @@ class NoiseDemoMain(tkinter.Frame):
       master.title("Noise Demo")
       
       self.displaySize = 500
+      self.halfSize = self.displaySize // 2
       
       # make the canvas
       self.canvas = tkinter.Canvas(master, width = self.displaySize + 200, height = self.displaySize + 100)
       self.canvas.pack()
-      painter.init(self.canvas, self.displaySize // 2)
       
+      # make the widgets
       randomButton = tkinter.Button(master, text = "Random Noise", command = self.generateRandom)
       randomButton.place(x = self.displaySize, y = 0, width = 200, height = 100)
       
@@ -39,33 +40,34 @@ class NoiseDemoMain(tkinter.Frame):
       self.interpDD = tkinter.OptionMenu(master, self.interpVal, *optionTuple)
       self.interpDD.place(x = self.displaySize, y = 350, width = 200, height = 50)
       
-      xStepLabel = tkinter.Label(master, text = "X Step Sample Rate:")
+      xStepLabel = tkinter.Label(master, text = "X Step\nSample Rate:")
       xStepLabel.place(x = self.displaySize, y = 400, width = 100, height = 50)
       self.xStepField = tkinter.Entry(master)
-      self.xStepField.insert(0, "25")
+      self.xStepField.insert(0, "50")
       self.xStepField.place(x = self.displaySize + 100, y = 400, width = 100, height = 50)
       
-      yStepLabel = tkinter.Label(master, text = "Y Step Sample Rate")
+      yStepLabel = tkinter.Label(master, text = "Y Step\nSample Rate")
       yStepLabel.place(x = self.displaySize, y = 450, width = 100, height = 50)
       self.yStepField = tkinter.Entry(master)
-      self.yStepField.insert(0, "25")
+      self.yStepField.insert(0, "50")
       self.yStepField.place(x = self.displaySize + 100, y = 450, width = 100, height = 50)
       
+      # start the main thread for the canvas
       master.mainloop()
    
    def getParams(self):
       """
-      Collect paramaters from entry fields and return as a tuple.
+      Collect paramaters from entry fields and return as a list.
       """
       octaves = int(self.octaveField.get())
       xStepFreq = int(self.xStepField.get())
       yStepFreq = int(self.yStepField.get())
-      size = self.displaySize // 2
+      size = self.halfSize # half size so that we do 62k pixels per octave rather than a quarter million
       interp = self.interpVal.get().split()[0].lower()
       return [octaves, xStepFreq, yStepFreq, size, interp]
    
    def generateRandom(self):
-      painter.paint(self.canvas, generator.getRandomNoise(self.displaySize // 2))
+      painter.paint(self.canvas, generator.getRandomNoise(self.halfSize))
    
    def generate1DPerlin(self):
       painter.paint(self.canvas, generator.get1DChoir(self.getParams()))
